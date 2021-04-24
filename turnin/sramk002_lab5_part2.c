@@ -12,8 +12,8 @@
 #include "simAVRHeader.h"
 #endif
 
-#define b1 (PINA & 0x01)
-#define b2 (PINA & 0x02)
+#define b1 (~PINA & 0x01)
+#define b2 (~PINA & 0x02)
 
 enum Num_States { SMStart, Wait, Inc, Inc_Wait, Dec, Dec_Wait, Reset } Num_State;
 
@@ -110,6 +110,11 @@ int main(void) {
         Num_State = SMStart;
     while (1) {
         TickFct(&tmpC);
+       if (tmpC >= 0x09){
+         tmpC = 0x09;
+       } else if (tmpC <= 0x00){
+         tmpC = 0x00;
+       }
         PORTC = tmpC;
     }
     return 1;
