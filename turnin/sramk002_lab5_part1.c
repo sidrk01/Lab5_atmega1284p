@@ -26,17 +26,17 @@ unsigned char tmpC = 0x00;
     
     switch (tmpA){
 	case 0x00: 
-	tmpC = 0x00;
+	tmpC = 0x40;
 	break;
 	
 	case 0x01:
 	case 0x02:
-	tmpC = 0x20;
+	tmpC = 0x60;
 	break;
 
 	case 0x03:
 	case 0x04: 
-	tmpC = 0x30;
+	tmpC = 0x70;
  	break;
 
 	case 0x05: 
@@ -66,10 +66,6 @@ unsigned char tmpC = 0x00;
 	tmpC = 0x00; 
 	break;
     }
-
-if (tmpA <= 0x04){
-   tmpC = tmpC | 0x40;
-}
 
 PORTC = tmpC;
 
