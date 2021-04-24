@@ -21,7 +21,7 @@ unsigned char tmpA = 0x00;
 unsigned char tmpC = 0x00;
     /* Insert your solution below */
     while (1) {
-    tmpA = PINA;
+    tmpA = PINA & 0x0F;
    
     
     switch (tmpA){
